@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Space]
 
     [Header("Values")]
-    public bool y;
+    [HideInInspector] public bool canMove;
     private bool isGrounded;
     private float sideWalk;
     [SerializeField] private float moveSpeed;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Instance = this;
-
+        canMove = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -41,24 +41,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        sideWalk = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(sideWalk * moveSpeed, rb.linearVelocity.y);
-        Vector2 newScale = transform.localScale;
-        if (sideWalk < 0)
+        if (canMove)
         {
-            animator.SetBool("isRun", sideWalk != 0);
-            newScale.x = -1;
+            sideWalk = Input.GetAxis("Horizontal");
+            rb.linearVelocity = new Vector2(sideWalk * moveSpeed, rb.linearVelocity.y);
+            Vector2 newScale = transform.localScale;
+            if (sideWalk < 0)
+            {
+                animator.SetBool("isRun", sideWalk != 0);
+                newScale.x = -1;
+            }
+            if (sideWalk == 0)
+            {
+                animator.SetBool("isRun", false);
+            }
+            if (sideWalk > 0)
+            {
+                newScale.x = 1;
+                animator.SetBool("isRun", sideWalk != 0);
+            }
+            transform.localScale = newScale;
         }
-        if (sideWalk == 0)
-        {
-            animator.SetBool("isRun", false);
-        }
-        if (sideWalk > 0)
-        {
-            newScale.x = 1;
-            animator.SetBool("isRun", sideWalk != 0);
-        }
-        transform.localScale = newScale;
     }
 
     public void Jump()

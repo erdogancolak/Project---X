@@ -15,6 +15,15 @@ public class InputHandler : MonoBehaviour
 
         playerInputs.Player.Jump.performed += PlayerJump;
         playerInputs.Player.SwordAttack.performed += PlayerSwordAttack;
+        playerInputs.Player.SwordAttack2.performed += PlayerSwordAttack2;
+    }
+
+    private void PlayerSwordAttack2(InputAction.CallbackContext context)
+    {
+        if(context.ReadValueAsButton())
+        {
+            PlayerAttack.Instance.Attack2();
+        }
     }
 
     private void PlayerSwordAttack(InputAction.CallbackContext context)

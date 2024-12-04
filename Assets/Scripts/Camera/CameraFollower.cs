@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    GameObject target;
     [SerializeField] private float smoothSpeed;
     [SerializeField] Vector3 offset;
-
+    public static bool isGameStart;
     void LateUpdate()
     {
         FollowTarget();
@@ -15,8 +15,12 @@ public class CameraFollower : MonoBehaviour
 
     void FollowTarget()
     {
-        Vector3 targetPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
+        if (isGameStart)
+        {
+            target = GameObject.FindWithTag("Player");
+            Vector3 targetPosition = target.transform.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+            transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
+        }
     }
 }

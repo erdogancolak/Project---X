@@ -44,6 +44,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwordAttack2"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f670211-74d9-487e-8454-d97df9ffbc7c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -90,6 +99,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""SwordAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ff03f42-af2c-4d08-9d1d-347db0d9b899"",
+                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Playstation"",
+                    ""action"": ""SwordAttack2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4065880-bc56-4831-8d99-ad7675fe096b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwordAttack2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -123,6 +154,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_SwordAttack = m_Player.FindAction("SwordAttack", throwIfNotFound: true);
+        m_Player_SwordAttack2 = m_Player.FindAction("SwordAttack2", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -191,12 +223,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_SwordAttack;
+    private readonly InputAction m_Player_SwordAttack2;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @SwordAttack => m_Wrapper.m_Player_SwordAttack;
+        public InputAction @SwordAttack2 => m_Wrapper.m_Player_SwordAttack2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +246,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwordAttack.started += instance.OnSwordAttack;
             @SwordAttack.performed += instance.OnSwordAttack;
             @SwordAttack.canceled += instance.OnSwordAttack;
+            @SwordAttack2.started += instance.OnSwordAttack2;
+            @SwordAttack2.performed += instance.OnSwordAttack2;
+            @SwordAttack2.canceled += instance.OnSwordAttack2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -222,6 +259,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwordAttack.started -= instance.OnSwordAttack;
             @SwordAttack.performed -= instance.OnSwordAttack;
             @SwordAttack.canceled -= instance.OnSwordAttack;
+            @SwordAttack2.started -= instance.OnSwordAttack2;
+            @SwordAttack2.performed -= instance.OnSwordAttack2;
+            @SwordAttack2.canceled -= instance.OnSwordAttack2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -261,5 +301,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnSwordAttack(InputAction.CallbackContext context);
+        void OnSwordAttack2(InputAction.CallbackContext context);
     }
 }
