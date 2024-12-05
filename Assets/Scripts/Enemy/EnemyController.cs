@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("isDie");
             this.enabled = false;
+            EnemyFollowPlayer.Instance.enabled = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             await DestroyObject();
         }

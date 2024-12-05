@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform AttackPoint;
     [SerializeField] private float AttackRange;
     [SerializeField] private float attackCooldown;
+    [SerializeField] private float attackCooldown2;
     [SerializeField] private LayerMask enemyLayers;
     [HideInInspector] public bool canAttack;
     private float _timer;
@@ -57,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
     public void Attack2()
     {
         
-        if (canAttack && _timer > attackCooldown)
+        if (canAttack && _timer > attackCooldown2)
         {
             _timer = 0f;
             PlayerMovement.Instance.canMove = false;
