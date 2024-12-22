@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static EnemyController instance;
+
     Rigidbody2D rb;
     Animator animator;
 
@@ -14,6 +16,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float knockbackForce;
 
+    public bool isKnockbacked = false;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,6 +32,10 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         isDead();
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     private void isDead()
@@ -58,6 +69,7 @@ public class EnemyController : MonoBehaviour
     {
         if (rb != null)
         {
+            isKnockbacked = true;
             rb.linearVelocity = Vector2.zero; 
             Vector2 knockbackDirection = new Vector2(transform.position.x - playerPosition.x, 0f).normalized;
 
@@ -82,6 +94,7 @@ public class EnemyController : MonoBehaviour
             if (EnemyFollowPlayer.Instance != null) 
             {
                 EnemyFollowPlayer.Instance.enabled = true;
+                isKnockbacked = false;
             }
         }
     }
