@@ -28,22 +28,27 @@ public class PlayerAttack : MonoBehaviour
         _timer += Time.deltaTime;
     }
 
-    private void GiveDamage()
+    private void GiveDamage(float damage)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyController>().TakeHit(swordDamage);
+            enemy.GetComponent<EnemyController>().TakeHit(damage);
+            if(enemy.GetComponent<EnemyController>().currentHp > 0)
+            {
+                enemy.GetComponent<EnemyController>().Knockback(transform.position);
+            }
         }
     }
     public void Attack()
     {
         if (canAttack && _timer > attackCooldown)
         {
-             _timer = 0f;
-             animator.SetBool("SwordAttack", true);
-             GiveDamage();
-             StartCoroutine(swordCooldown("SwordAttack"));
+            PlayerMovement.Instance.canMove = false;
+            _timer = 0f;
+            animator.SetBool("SwordAttack", true);
+            GiveDamage(swordDamage);
+            StartCoroutine(swordCooldown("SwordAttack"));
         }
     }
 
@@ -63,12 +68,14 @@ public class PlayerAttack : MonoBehaviour
             _timer = 0f;
             PlayerMovement.Instance.canMove = false;
             animator.SetBool("SwordAttack2", true);
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<EnemyController>().TakeHit(swordDamage2);
-            }
+            GiveDamage(swordDamage2);
             StartCoroutine(swordCooldown("SwordAttack2"));
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
     }
 }

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    Rigidbody2D rb;
     Animator animator;
+
     [SerializeField] private float maxHp;
-    private float currentHp;
+    [HideInInspector] public float currentHp;
+
+    [SerializeField] private float waitDestroyFloat;
+
+    [SerializeField] private float knockbackForce;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
         currentHp = maxHp;
@@ -20,15 +27,18 @@ public class EnemyController : MonoBehaviour
         isDead();
     }
 
-    private async void isDead()
+    private void isDead()
     {
         if(currentHp <= 0)
         {
             animator.SetTrigger("isDie");
             this.enabled = false;
-            EnemyFollowPlayer.Instance.enabled = false;
+            if (EnemyFollowPlayer.Instance != null)
+            {
+                Destroy(EnemyFollowPlayer.Instance);
+            }
             GetComponent<CapsuleCollider2D>().enabled = false;
-            await DestroyObject();
+            StartCoroutine(DestroyObject());
         }
     }
 
@@ -38,9 +48,41 @@ public class EnemyController : MonoBehaviour
         currentHp -= TakeDamage;
     }
 
-    private async Task DestroyObject()
+    IEnumerator DestroyObject()
     {
-        await Task.Delay(10000);
+        yield return new WaitForSeconds(waitDestroyFloat);
         Destroy(this.gameObject);
+    }
+
+    public void Knockback(Vector2 playerPosition)
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero; 
+            Vector2 knockbackDirection = new Vector2(transform.position.x - playerPosition.x, 0f).normalized;
+
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            StartCoroutine(DisableFollowForKnockback());
+        }
+    }
+
+    private IEnumerator DisableFollowForKnockback()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        rb.linearVelocity = Vector2.zero;
+
+        if (EnemyFollowPlayer.Instance != null)
+        {
+            EnemyFollowPlayer.Instance.enabled = false;
+
+            yield return new WaitForSeconds(0.27f);
+
+            if (EnemyFollowPlayer.Instance != null) 
+            {
+                EnemyFollowPlayer.Instance.enabled = true;
+            }
+        }
     }
 }

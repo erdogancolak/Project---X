@@ -20,7 +20,7 @@ public class InputHandler : MonoBehaviour
 
     private void PlayerSwordAttack2(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton())
+        if (context.ReadValueAsButton())
         {
             PlayerAttack.Instance.Attack2();
         }
@@ -28,7 +28,7 @@ public class InputHandler : MonoBehaviour
 
     private void PlayerSwordAttack(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton())
+        if (context.ReadValueAsButton())
         {
             PlayerAttack.Instance.Attack();
         }

@@ -10,9 +10,12 @@ public class EnemyFollowPlayer : MonoBehaviour
     [SerializeField] private float detectRange;
     [SerializeField] private float stopRange;
     [SerializeField] private float speed;
-    void Start()
+    private void Awake()
     {
         Instance = this;
+    }
+    void Start()
+    {
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
     }
@@ -21,7 +24,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if(distance <= detectRange)
+        if (distance <= detectRange)
         {
             isChasing = true;
         }
@@ -29,7 +32,8 @@ public class EnemyFollowPlayer : MonoBehaviour
         {
             isChasing = false;
         }
-        if(isChasing && distance > stopRange)
+
+        if (isChasing && distance > stopRange)
         {
             ChasePlayer();
         }
@@ -37,7 +41,9 @@ public class EnemyFollowPlayer : MonoBehaviour
         {
             StopChasing();
         }
+
         FlipTowardsPlayer();
+
     }
 
     private void ChasePlayer()

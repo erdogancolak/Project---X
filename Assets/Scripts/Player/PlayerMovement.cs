@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Instance = this;
-        canMove = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        canMove = true;
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
