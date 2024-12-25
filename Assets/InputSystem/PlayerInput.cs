@@ -53,6 +53,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c0162c7-921a-4356-9a79-f5dccd1e57ff"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -121,6 +130,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""SwordAttack2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60d31574-b8f1-467b-81eb-15454ea5de9e"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fb8ee5a-225f-4df5-a332-6c006e08f4c3"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Playstation"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -155,6 +186,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_SwordAttack = m_Player.FindAction("SwordAttack", throwIfNotFound: true);
         m_Player_SwordAttack2 = m_Player.FindAction("SwordAttack2", throwIfNotFound: true);
+        m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -224,6 +256,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_SwordAttack;
     private readonly InputAction m_Player_SwordAttack2;
+    private readonly InputAction m_Player_Slide;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -231,6 +264,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @SwordAttack => m_Wrapper.m_Player_SwordAttack;
         public InputAction @SwordAttack2 => m_Wrapper.m_Player_SwordAttack2;
+        public InputAction @Slide => m_Wrapper.m_Player_Slide;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +283,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwordAttack2.started += instance.OnSwordAttack2;
             @SwordAttack2.performed += instance.OnSwordAttack2;
             @SwordAttack2.canceled += instance.OnSwordAttack2;
+            @Slide.started += instance.OnSlide;
+            @Slide.performed += instance.OnSlide;
+            @Slide.canceled += instance.OnSlide;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -262,6 +299,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwordAttack2.started -= instance.OnSwordAttack2;
             @SwordAttack2.performed -= instance.OnSwordAttack2;
             @SwordAttack2.canceled -= instance.OnSwordAttack2;
+            @Slide.started -= instance.OnSlide;
+            @Slide.performed -= instance.OnSlide;
+            @Slide.canceled -= instance.OnSlide;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -302,5 +342,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnSwordAttack(InputAction.CallbackContext context);
         void OnSwordAttack2(InputAction.CallbackContext context);
+        void OnSlide(InputAction.CallbackContext context);
     }
 }

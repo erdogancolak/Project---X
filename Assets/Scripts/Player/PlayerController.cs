@@ -28,6 +28,5 @@ public class PlayerController : MonoBehaviour
     public void TakeHit(float damage)
     {
         currentHp -= damage;
-        Debug.Log(currentHp);
     }
 }

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private Rigidbody2D rb;
     private Animator animator;
+    private Collider2D collider;
     public static PlayerMovement Instance { get; private set; }
 
     [Space]
@@ -21,14 +22,20 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float sideWalk;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private bool isJumping;
     [SerializeField] private float jumpForce;
     [SerializeField] private float delay;
+
+    [SerializeField] private bool isSliding = false;
+    [SerializeField] private float slideSpeed;
+    [SerializeField] private float slideDuration;
 
     void Start()
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        collider = GetComponent<Collider2D>();
         canMove = true;
     }
 
@@ -66,10 +73,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        if (isSliding || isJumping) return;
+
         PlayerAttack.Instance.canAttack = false;
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-        if (isGrounded)
+
+        if (isGrounded && isSliding == false)
         {
+            isJumping = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetBool("isJump", true);
             StartCoroutine(JumpToIdle());
@@ -81,5 +92,30 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(delay);
         animator.SetBool("isJump", false);
         PlayerAttack.Instance.canAttack = true;
+        isJumping = false;
+    }
+
+    public void Slide()
+    {
+        if (isSliding || isJumping) return;
+
+        StartCoroutine(SlideIE());
+    }
+
+    IEnumerator SlideIE()
+    {
+        isSliding = true;
+        collider.enabled = false;
+        float originalSpeed = moveSpeed;
+        moveSpeed = slideSpeed;
+        animator.SetBool("isSlide", true);
+
+        yield return new WaitForSeconds(slideDuration);
+
+        animator.SetBool("isSlide", false);
+        collider.enabled = true;
+        moveSpeed = originalSpeed;
+
+        isSliding = false;
     }
 }
