@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [HideInInspector] public bool canAttack;
     private float _timer;
+
+    public string attackAnim = "StickAttack";
+    public string attack2Anim = "StickAttack2";
     void Start()
     {
         Instance = this;
@@ -46,9 +49,9 @@ public class PlayerAttack : MonoBehaviour
         {
             PlayerMovement.Instance.canMove = false;
             _timer = 0f;
-            animator.SetBool("SwordAttack", true);
+            animator.SetBool(attackAnim, true);
             GiveDamage(swordDamage);
-            StartCoroutine(swordCooldown("SwordAttack"));
+            StartCoroutine(swordCooldown(attackAnim));
         }
     }
 
@@ -67,9 +70,9 @@ public class PlayerAttack : MonoBehaviour
         {
             _timer = 0f;
             PlayerMovement.Instance.canMove = false;
-            animator.SetBool("SwordAttack2", true);
+            animator.SetBool(attack2Anim, true);
             GiveDamage(swordDamage2);
-            StartCoroutine(swordCooldown("SwordAttack2"));
+            StartCoroutine(swordCooldown(attack2Anim));
         }
     }
 

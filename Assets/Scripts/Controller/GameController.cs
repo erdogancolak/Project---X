@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     {
         Destroy(gameObject);
         Instantiate(PlayerGameObject);
-        Instantiate(EnemyGameObject);
+        //Instantiate(EnemyGameObject);
         CameraFollower.isGameStart = true;
     }
 }

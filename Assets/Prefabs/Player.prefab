@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1665877308286481630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.081, z: 0}
+  m_LocalPosition: {x: -0.065, y: -1.271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,7 +102,7 @@ Transform:
   m_GameObject: {fileID: 3309415918956212385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 117d0ba90034152458cccad1085dcf88, type: 3}
+  m_Sprite: {fileID: -2010234357, guid: f72e7c2d649bc244f9e63148d3559d21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,8 +199,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.012557328, y: 1.2660515}
-  m_Size: {x: 0.90791225, y: 2.4533434}
+  m_Offset: {x: -0.07365155, y: 0.643072}
+  m_Size: {x: 1.0022883, y: 3.8276446}
   m_Direction: 0
 --- !u!50 &8682000950847678957
 Rigidbody2D:
@@ -247,10 +247,10 @@ MonoBehaviour:
     m_Bits: 64
   canMove: 0
   moveSpeed: 6
+  isJumping: 0
   jumpForce: 12
   delay: 0.65
   isSliding: 0
-  canSlide: 1
   slideSpeed: 15
   slideDuration: 0.45
 --- !u!114 &1979388399157104512
@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 6996101709613756678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 0.94, z: 0}
+  m_LocalPosition: {x: 0.857, y: 0.472, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

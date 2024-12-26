@@ -68,7 +68,7 @@
                 {
                     "name": "",
                     "id": "5d852fed-10ba-4a98-9042-cfa1bd758f2f",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -101,7 +101,7 @@
                 {
                     "name": "",
                     "id": "c4065880-bc56-4831-8d99-ad7675fe096b",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
