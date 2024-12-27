@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f72e7c2d649bc244f9e63148d3559d21
+guid: b06d78e1c9b7d0b4196a13b924bd0adb
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: human_idle_cycle_L&R_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,125 +149,15 @@ TextureImporter:
         width: 160
         height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6fb3d523d8855bc4f8efcb8d3705bb65
-      internalID: -2010234357
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_1
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 160
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 959aa9b6e400a744393cc2c3dd4eef88
-      internalID: -254497295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_2
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 160
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0762876dd398f7a48985fcdb1506fa3b
-      internalID: 296900524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_3
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 160
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7699468ff7ca7314e987d1048a0a69de
-      internalID: 2092017610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_4
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 160
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c1950b7dc3370349b82656c2f06d6f2
-      internalID: 1715077527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_5
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 160
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea0b9b624605ac84689889b3d56c395c
-      internalID: 415587137
+      spriteID: 925ddce44d31cf7e0800000000000000
+      internalID: -1730486354241006295
       vertices: []
       indices: 
       edges: []
@@ -276,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ae57192bd4c38fc429acdfb5cf248854
+    spriteID: abbae827ae306cf4e877255d25cfd4e4
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +176,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle_0: -2010234357
-      Idle_1: -254497295
-      Idle_2: 296900524
-      Idle_3: 2092017610
-      Idle_4: 1715077527
-      Idle_5: 415587137
+      human_idle_cycle_L&R_0: -1730486354241006295
+      human_idle_cycle_L&R_1: -5813103060495163625
+      human_idle_cycle_L&R_2: 4637757968517926108
+      human_idle_cycle_L&R_3: 6290379642440250955
+      human_idle_cycle_L&R_4: 206534519123348336
+      human_idle_cycle_L&R_5: -5320385060769688249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
