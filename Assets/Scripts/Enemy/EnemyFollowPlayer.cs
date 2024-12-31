@@ -5,14 +5,23 @@ public class EnemyFollowPlayer : MonoBehaviour
 {
     public static EnemyFollowPlayer Instance { get; private set; }
 
+    [Header("References")]
+
     private GameObject player;
-    Rigidbody2D rb;
+
     Animator animator;
+
+    [Space]
+
+    [Header("Settings")]
     private bool isChasing;
     private bool canAttack = false;
+
     [SerializeField] private float detectRange;
     [SerializeField] private float stopRange;
+
     [SerializeField] private float speed;
+
     private float distance;
     private void Awake()
     {
@@ -20,7 +29,6 @@ public class EnemyFollowPlayer : MonoBehaviour
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
     }

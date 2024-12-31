@@ -3,23 +3,23 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public static EnemyAttack instance;
+    [Header("References")]
 
     [SerializeField] private Transform AttackPoint;
-    [SerializeField] private float AttackRange;
-    [SerializeField] private LayerMask playerLayer;
+
+    [Space]
+
+    [Header("Setting")]
+
     [SerializeField] private int SwordDamage;
+
+    [SerializeField] private float AttackRange;
+
+    [SerializeField] private LayerMask playerLayer;
+    
     private void Awake()
     {
         instance = this;
-    }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 
     public void GiveDamage()
@@ -31,9 +31,9 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+    //}
 }

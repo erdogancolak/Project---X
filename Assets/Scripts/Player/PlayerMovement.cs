@@ -7,20 +7,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance { get; private set; }
+
     [Header("References")]
-    public Transform groundCheck;
-    public LayerMask groundLayer;
     private Rigidbody2D rb;
     private Animator animator;
     private Collider2D collider;
-    public static PlayerMovement Instance { get; private set; }
 
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    
     [Space]
 
-    [Header("Values")]
+    [Header("Settings")]
+
     [HideInInspector] public bool canMove;
+
     private bool isGrounded;
+
     private float sideWalk;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private bool isJumping;
     [SerializeField] private float jumpForce;
@@ -52,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             sideWalk = Input.GetAxis("Horizontal");
             rb.linearVelocity = new Vector2(sideWalk * moveSpeed, rb.linearVelocity.y);
+
             Vector2 newScale = transform.localScale;
             if (sideWalk < 0)
             {

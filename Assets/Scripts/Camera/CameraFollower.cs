@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
+    [Header("References")]
+
     GameObject target;
+
+    [Space]
+
+    [Header("Settings")]
+
     [SerializeField] private float smoothSpeed;
+
     [SerializeField] Vector3 offset;
+
     public static bool isGameStart;
     void LateUpdate()
     {

@@ -6,10 +6,14 @@ public class WeaponChangeController : MonoBehaviour
     {
         PlayerAttack.Instance.attackAnim = "StickAttack";
         PlayerAttack.Instance.attack2Anim = "StickAttack2";
+
+        PlayerAttack.Instance.isRangedWeapon = false;
     }
     public void NailStick()
     {
         PlayerAttack.Instance.attackAnim = "NailStickAttack";
         PlayerAttack.Instance.attack2Anim = "NailStickAttack2";
+
+        PlayerAttack.Instance.isRangedWeapon = false;
     }
 }

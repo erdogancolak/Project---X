@@ -6,8 +6,14 @@ public class EnemyController : MonoBehaviour
 {
     public static EnemyController instance;
 
+    [Header("References")]
+
     Rigidbody2D rb;
     Animator animator;
+
+    [Space]
+
+    [Header("Settings")]
 
     [SerializeField] private float maxHp;
     [HideInInspector] public float currentHp;
@@ -16,7 +22,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float knockbackForce;
 
-    public bool isKnockbacked = false;
+    [HideInInspector] public bool isKnockbacked = false;
     private void Awake()
     {
         instance = this;
@@ -32,10 +38,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         isDead();
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            animator.SetTrigger("Attack");
-        }
     }
 
     private void isDead()

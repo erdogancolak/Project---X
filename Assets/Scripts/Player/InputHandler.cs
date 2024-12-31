@@ -19,6 +19,14 @@ public class InputHandler : MonoBehaviour
         //playerInputs.Player.Slide.performed += PlayerSlide;
     }
 
+    //private void PlayerJump(InputAction.CallbackContext context)
+    //{
+    //    if (context.ReadValueAsButton())
+    //    {
+    //        PlayerMovement.Instance.Jump();
+    //    }
+    //}
+
     //private void PlayerSlide(InputAction.CallbackContext context)
     //{
     //    if(context.ReadValueAsButton())
@@ -27,6 +35,13 @@ public class InputHandler : MonoBehaviour
     //    }
     //}
 
+    private void PlayerSwordAttack(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton())
+        {
+            PlayerAttack.Instance.Attack();
+        }
+    }
     private void PlayerSwordAttack2(InputAction.CallbackContext context)
     {
         if (context.ReadValueAsButton())
@@ -35,21 +50,9 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    private void PlayerSwordAttack(InputAction.CallbackContext context)
-    {
-        if (context.ReadValueAsButton())
-        {
-            PlayerAttack.Instance.Attack();
-        }
-    }
+   
 
-    //private void PlayerJump(InputAction.CallbackContext context)
-    //{
-    //    if (context.ReadValueAsButton())
-    //    {
-    //        PlayerMovement.Instance.Jump();
-    //    }
-    //}
+    
 
 
 }

@@ -7,22 +7,39 @@ public class PlayerAttack : MonoBehaviour
     Animator animator;
     public static PlayerAttack Instance { get; private set; }
 
+    [Header("References")]
+
+    [SerializeField] private Transform AttackPoint;
+
+    [Space]
+
+    [Header("Settings")]
+
     [SerializeField] private float swordDamage;
     [SerializeField] private float swordDamage2;
-    [SerializeField] private Transform AttackPoint;
+    
     [SerializeField] private float AttackRange;
+
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackCooldown2;
+
     [SerializeField] private LayerMask enemyLayers;
+
     [HideInInspector] public bool canAttack;
     private float _timer;
 
     public string attackAnim = "StickAttack";
     public string attack2Anim = "StickAttack2";
-    void Start()
+
+    [HideInInspector] public bool isRangedWeapon = false;
+    private void Awake()
     {
         Instance = this;
+    }
+    void Start()
+    {
         animator = GetComponent<Animator>();
+
         canAttack = true;
     }
 
@@ -45,6 +62,18 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Attack()
     {
+        if(!isRangedWeapon)
+        {
+            closeAttack();
+        }
+        else
+        {
+            rangedAttack();
+        }
+    }
+
+    private void closeAttack()
+    {
         if (canAttack && _timer > attackCooldown)
         {
             PlayerMovement.Instance.canMove = false;
@@ -54,18 +83,23 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(swordCooldown(attackAnim));
         }
     }
-
-    IEnumerator swordCooldown(string BoolName)
+    private void rangedAttack()
     {
-        yield return new WaitForSeconds(0.1f);
-        animator.SetBool(BoolName, false);
-        yield return new WaitForSeconds(0.3f);
-        PlayerMovement.Instance.canMove = true;
+        Debug.Log("Ranged Weapon ");
     }
-
     public void Attack2()
     {
-        
+        if (!isRangedWeapon)
+        {
+            closeAttack2();
+        }
+        else
+        {
+            rangedAttack2();
+        }
+    }
+    private void closeAttack2()
+    {
         if (canAttack && _timer > attackCooldown2)
         {
             _timer = 0f;
@@ -75,7 +109,18 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(swordCooldown(attack2Anim));
         }
     }
+    private void rangedAttack2()
+    {
+        Debug.Log("Ranged Weapon 2 ");
+    }
 
+    IEnumerator swordCooldown(string BoolName)
+    {
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool(BoolName, false);
+        yield return new WaitForSeconds(0.3f);
+        PlayerMovement.Instance.canMove = true;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

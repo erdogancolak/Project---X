@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("References")]
+
+    [Space]
+
+    [Header("Settings")]
 
     [SerializeField] private float maxHp;
     [HideInInspector] public float currentHp;
