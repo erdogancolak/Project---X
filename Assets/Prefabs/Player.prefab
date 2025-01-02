@@ -154,12 +154,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1730486354241006295, guid: b06d78e1c9b7d0b4196a13b924bd0adb, type: 3}
+  m_Sprite: {fileID: 4339797219220960029, guid: 6293c54c4907c494bbda57e3a8bc8d8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.9375, y: 4}
+  m_Size: {x: 1.8125, y: 3.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -277,9 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2927c6e2a5e463f489825aa0d954cfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackPoint: {fileID: 8301030956457183092}
   swordDamage: 35
   swordDamage2: 50
-  AttackPoint: {fileID: 8301030956457183092}
   AttackRange: 0.6
   attackCooldown: 0.75
   attackCooldown2: 0.83
@@ -289,6 +289,7 @@ MonoBehaviour:
   canAttack: 0
   attackAnim: StickAttack
   attack2Anim: StickAttack2
+  isRangedWeapon: 0
 --- !u!95 &4676008434525234870
 Animator:
   serializedVersion: 7
