@@ -7,7 +7,7 @@ public class EnemyFollowPlayer : MonoBehaviour
 
     [Header("References")]
 
-    private GameObject player;
+    [HideInInspector] public GameObject player;
 
     Animator animator;
 
@@ -63,7 +63,7 @@ public class EnemyFollowPlayer : MonoBehaviour
 
     private void ChasePlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position,new Vector2(player.transform.position.x,transform.position.y), speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
         animator.SetBool("isRun", true);
     }
     private void StopChasing()
@@ -87,7 +87,7 @@ public class EnemyFollowPlayer : MonoBehaviour
         if (canAttack)
             return;
 
-        if(distance <= stopRange && EnemyController.instance.isKnockbacked == false)
+        if (distance <= stopRange && EnemyController.instance.isKnockbacked == false)
         {
             StopAndAttack();
         }
@@ -96,14 +96,14 @@ public class EnemyFollowPlayer : MonoBehaviour
     void StopAndAttack()
     {
         canAttack = true;
-        
+
         StartCoroutine(AttackIE());
     }
 
     IEnumerator AttackIE()
     {
         yield return new WaitForSeconds(.2f);
-        if(EnemyController.instance.isKnockbacked == false)
+        if (EnemyController.instance.isKnockbacked == false)
         {
             animator.SetTrigger("Attack");
             EnemyAttack.instance.GiveDamage();
@@ -112,5 +112,5 @@ public class EnemyFollowPlayer : MonoBehaviour
         canAttack = false;
     }
 
-    
+
 }

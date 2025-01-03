@@ -209,7 +209,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_NailStickAttack
+  m_Name: Player_NailBatAttack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -236,7 +236,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_NailStickAttack2
+  m_Name: Player_NailBatAttack2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -495,7 +495,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_StickAttack2
+  m_Name: Player_WoodenStickAttack2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -522,7 +522,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_StickAttack
+  m_Name: Player_WoodenStickAttack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -536,7 +536,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7435145585351105633, guid: 0f8ba5c37a36bed459b25b4f400c255d, type: 3}
+  m_Motion: {fileID: 3593357219671433945, guid: 0f8ba5c37a36bed459b25b4f400c255d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
