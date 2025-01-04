@@ -69,6 +69,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.1, y: 0.1}
   m_Direction: 1
+--- !u!1 &2422764769331905480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90193285064354905}
+  m_Layer: 8
+  m_Name: RangedWeaponPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &90193285064354905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422764769331905480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35, y: 0.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216633730403552737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3309415918956212385
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,10 +112,10 @@ GameObject:
   - component: {fileID: 2700019189977052243}
   - component: {fileID: 8054550701273757292}
   - component: {fileID: 8682000950847678957}
+  - component: {fileID: 4676008434525234870}
   - component: {fileID: 5002626184619970581}
   - component: {fileID: 1979388399157104512}
   - component: {fileID: 2789810634070187718}
-  - component: {fileID: 4676008434525234870}
   - component: {fileID: 1183095835483059301}
   m_Layer: 8
   m_Name: Player
@@ -108,6 +139,7 @@ Transform:
   m_Children:
   - {fileID: 858998331204222835}
   - {fileID: 8301030956457183092}
+  - {fileID: 90193285064354905}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2700019189977052243
@@ -229,6 +261,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &4676008434525234870
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309415918956212385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f257e4ad3484934b9f40b8e58e78cc0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5002626184619970581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,11 +332,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPoint: {fileID: 8301030956457183092}
+  rangedWeaponPoint: {fileID: 90193285064354905}
+  projectilePrefab: {fileID: 6807004156411165690, guid: 2273050e87db5d44f8ceed2e80bf67b6, type: 3}
   swordDamage: 35
   swordDamage2: 50
   AttackRange: 0.6
   attackCooldown: 0.75
   attackCooldown2: 0.83
+  rangeAttackCooldown: 2
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -290,28 +347,7 @@ MonoBehaviour:
   attackAnim: StickAttack
   attack2Anim: StickAttack2
   isRangedWeapon: 0
---- !u!95 &4676008434525234870
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3309415918956212385}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f257e4ad3484934b9f40b8e58e78cc0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  projectileSpeed: 8
 --- !u!114 &1183095835483059301
 MonoBehaviour:
   m_ObjectHideFlags: 0

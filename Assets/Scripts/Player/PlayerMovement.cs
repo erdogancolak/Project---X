@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slideSpeed;
     [SerializeField] private float slideDuration;
 
+    public static bool isRight;
     void Start()
     {
         Instance = this;
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 newScale = transform.localScale;
             if (sideWalk < 0)
             {
+                isRight = false;
                 animator.SetBool("isRun", sideWalk != 0);
                 newScale.x = -1;
             }
@@ -71,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (sideWalk > 0)
             {
+                isRight = true;
                 newScale.x = 1;
                 animator.SetBool("isRun", sideWalk != 0);
             }

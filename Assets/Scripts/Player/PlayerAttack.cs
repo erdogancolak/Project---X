@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Transform AttackPoint;
 
+    [SerializeField] private Transform rangedWeaponPoint;
+
+    [SerializeField] private GameObject projectilePrefab;
+
     [Space]
 
     [Header("Settings")]
@@ -22,16 +27,22 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackCooldown2;
+    [SerializeField] private float rangeAttackCooldown;
 
     [SerializeField] private LayerMask enemyLayers;
 
     [HideInInspector] public bool canAttack;
+   
     private float _timer;
 
     public string attackAnim = "StickAttack";
     public string attack2Anim = "StickAttack2";
 
     [HideInInspector] public bool isRangedWeapon = false;
+
+    [SerializeField] private float projectileSpeed;
+
+    private Vector2 direction = Vector2.right;
     private void Awake()
     {
         Instance = this;
@@ -85,17 +96,31 @@ public class PlayerAttack : MonoBehaviour
     }
     private void rangedAttack()
     {
-        Debug.Log("Ranged Weapon ");
+        if(PlayerMovement.isRight) direction = Vector2.right;
+        if(!PlayerMovement.isRight) direction = Vector2.left;
+
+        if(canAttack && _timer > rangeAttackCooldown )
+        {
+            _timer = 0f;
+
+            PlayerMovement.Instance.canMove = false;
+
+            GameObject createdProjectile = Instantiate(projectilePrefab, rangedWeaponPoint.position, Quaternion.identity);
+
+            Rigidbody2D projectileRb = createdProjectile.GetComponent<Rigidbody2D>();
+            projectileRb.linearVelocity = direction * projectileSpeed;
+
+            createdProjectile.transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
+
+            animator.SetBool(attackAnim, true);
+            StartCoroutine(swordCooldown(attackAnim));
+        }
     }
     public void Attack2()
     {
         if (!isRangedWeapon)
         {
             closeAttack2();
-        }
-        else
-        {
-            rangedAttack2();
         }
     }
     private void closeAttack2()
@@ -108,10 +133,6 @@ public class PlayerAttack : MonoBehaviour
             GiveDamage(swordDamage2);
             StartCoroutine(swordCooldown(attack2Anim));
         }
-    }
-    private void rangedAttack2()
-    {
-        Debug.Log("Ranged Weapon 2 ");
     }
 
     IEnumerator swordCooldown(string BoolName)

@@ -16,4 +16,11 @@ public class WeaponChangeController : MonoBehaviour
 
         PlayerAttack.Instance.isRangedWeapon = false;
     }
+
+    public void RangedWeapon()
+    {
+        PlayerAttack.Instance.attackAnim = "RangedAttack1";
+
+        PlayerAttack.Instance.isRangedWeapon = true;
+    }
 }
