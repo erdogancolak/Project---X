@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float waitDestroyFloat;
 
-    [SerializeField] private float knockbackForce;
+    
 
     [HideInInspector] public bool isKnockbacked = false;
     private void Awake()
@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void Knockback(Vector2 playerPosition)
+    public void Knockback(Vector2 playerPosition,float knockBackPower)
     {
         if (rb != null)
         {
@@ -75,7 +75,7 @@ public class EnemyController : MonoBehaviour
             rb.linearVelocity = Vector2.zero; 
             Vector2 knockbackDirection = new Vector2(transform.position.x - playerPosition.x, 0f).normalized;
 
-            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+            rb.AddForce(knockbackDirection * knockBackPower, ForceMode2D.Impulse);
 
             StartCoroutine(DisableFollowForKnockback());
         }
@@ -99,5 +99,15 @@ public class EnemyController : MonoBehaviour
                 isKnockbacked = false;
             }
         }
+    }
+
+    public IEnumerator Stun(float duration)
+    {
+        float speedHoldFloat = EnemyFollowPlayer.Instance.speed;
+        EnemyFollowPlayer.Instance.speed = 0f;
+        Debug.Log("Enemy Stunned");
+        yield return new WaitForSeconds(duration);
+        EnemyFollowPlayer.Instance.speed = speedHoldFloat;
+        Debug.Log("Enemy Stun Finish");
     }
 }

@@ -29,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackCooldown2;
     [SerializeField] private float rangeAttackCooldown;
 
+    [SerializeField] private float knockbackForce;
+
     [SerializeField] private LayerMask enemyLayers;
 
     [HideInInspector] public bool canAttack;
@@ -67,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<EnemyController>().TakeHit(damage);
             if(enemy.GetComponent<EnemyController>().currentHp > 0)
             {
-                enemy.GetComponent<EnemyController>().Knockback(transform.position);
+                enemy.GetComponent<EnemyController>().Knockback(transform.position,knockbackForce);
             }
         }
     }

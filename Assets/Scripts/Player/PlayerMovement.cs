@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     private Rigidbody2D rb;
     private Animator animator;
-    private Collider2D collider;
+    private Collider2D playerCollider;
 
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        collider = GetComponent<Collider2D>();
+        playerCollider = GetComponent<Collider2D>();
         canMove = true;
     }
 
@@ -81,51 +81,51 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //public void Jump()
-    //{
-    //    if (isSliding || isJumping) return;
+    public void Jump()
+    {
+        if (isSliding || isJumping) return;
 
-    //    PlayerAttack.Instance.canAttack = false;
-    //    isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        PlayerAttack.Instance.canAttack = false;
+        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
 
-    //    if (isGrounded && isSliding == false)
-    //    {
-    //        isJumping = true;
-    //        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-    //        animator.SetBool("isJump", true);
-    //        StartCoroutine(JumpToIdle());
-    //    }
-    //}
+        if (isGrounded && isSliding == false)
+        {
+            isJumping = true;
+            animator.SetBool("isJump", true);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            StartCoroutine(JumpToIdle());
+        }
+    }
 
-    //IEnumerator JumpToIdle()
-    //{
-    //    yield return new WaitForSeconds(delay);
-    //    animator.SetBool("isJump", false);
-    //    PlayerAttack.Instance.canAttack = true;
-    //    isJumping = false;
-    //}
+    IEnumerator JumpToIdle()
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("isJump", false);
+        PlayerAttack.Instance.canAttack = true;
+        isJumping = false;
+    }
 
-    //public void Slide()
-    //{
-    //    if (isSliding || isJumping) return;
+    public void Slide()
+    {
+        if (isSliding || isJumping) return;
 
-    //    StartCoroutine(SlideIE());
-    //}
+        StartCoroutine(SlideIE());
+    }
 
-    //IEnumerator SlideIE()
-    //{
-    //    isSliding = true;
-    //    collider.enabled = false;
-    //    float originalSpeed = moveSpeed;
-    //    moveSpeed = slideSpeed;
-    //    animator.SetBool("isSlide", true);
+    IEnumerator SlideIE()
+    {
+        isSliding = true;
+        playerCollider.enabled = false;
+        float originalSpeed = moveSpeed;
+        moveSpeed = slideSpeed;
+        animator.SetBool("isSlide", true);
 
-    //    yield return new WaitForSeconds(slideDuration);
+        yield return new WaitForSeconds(slideDuration);
 
-    //    animator.SetBool("isSlide", false);
-    //    collider.enabled = true;
-    //    moveSpeed = originalSpeed;
+        animator.SetBool("isSlide", false);
+        playerCollider.enabled = true;
+        moveSpeed = originalSpeed;
 
-    //    isSliding = false;
-    //}
+        isSliding = false;
+    }
 }

@@ -55,7 +55,7 @@ public class PainterMiniBoss : MonoBehaviour
     {
         Debug.Log("Çivi Atýldý ");
 
-        Vector3 nailGoesPos = new Vector3(enemyFollowPlayer.player.transform.position.x, enemyFollowPlayer.player.transform.position.y + .5f, enemyFollowPlayer.player.transform.position.z);
+        Vector3 nailGoesPos = new Vector3(enemyFollowPlayer.player.transform.position.x, 1.9f, enemyFollowPlayer.player.transform.position.z);
         Vector2 direction = (nailGoesPos - rangedWeaponPoint.position).normalized;
 
         

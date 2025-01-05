@@ -20,7 +20,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     [SerializeField] private float detectRange;
     [SerializeField] private float stopRange;
 
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
 
     private float distance;
     private void Awake()

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
+    CollectableItemController collectableItemController;
     private PlayerInput playerInputs;
 
     private void Awake()
@@ -25,12 +26,14 @@ public class InputHandler : MonoBehaviour
 
         playerInputs.Player.CollectItem.performed += CollectItemInput;
     }
+
+    
+
     private void PlayerJump(InputAction.CallbackContext context)
     {
         if (context.ReadValueAsButton())
         {
-            Debug.Log("Jumped");
-            //PlayerMovement.Instance.Jump();
+            PlayerMovement.Instance.Jump();
         }
     }
 
@@ -38,8 +41,7 @@ public class InputHandler : MonoBehaviour
     {
         if (context.ReadValueAsButton())
         {
-            Debug.Log("Slide");
-            //PlayerMovement.Instance.Slide();
+            PlayerMovement.Instance.Slide();
         }
     }
 
@@ -66,11 +68,25 @@ public class InputHandler : MonoBehaviour
     {
         PlayerAbility.Instance.UseAbility2();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("CollectableItems"))
+        {
+            collectableItemController = collision.GetComponent<CollectableItemController>();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("CollectableItems"))
+        {
+            collectableItemController = null;
+        }
+    }
     private void CollectItemInput(InputAction.CallbackContext context)
     {
-        if(CollectableItemController.Instance.isCharacterInside)
+        if(collectableItemController != null)
         {
-            CollectableItemController.Instance.CollectItem();
+            collectableItemController.CollectItem();
         }
     }
 }

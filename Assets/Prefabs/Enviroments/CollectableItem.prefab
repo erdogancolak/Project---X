@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 5623915298834822266}
   m_Layer: 0
   m_Name: CollectableItem
-  m_TagString: Untagged
+  m_TagString: CollectableItems
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,3 +380,4 @@ MonoBehaviour:
   item: {fileID: 0}
   infoText: {fileID: 2353930550445478770}
   PlayerTag: Player
+  isCharacterInside: 0
