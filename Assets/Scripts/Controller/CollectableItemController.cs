@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CollectableItemController : MonoBehaviour
 {
+    public static CollectableItemController Instance;
     [Header("References")]
 
     [SerializeField] private GameObject item;
@@ -16,18 +17,11 @@ public class CollectableItemController : MonoBehaviour
 
     [SerializeField] private string PlayerTag;
 
-    private bool isCharacterInside;
-
-    private void Update()
+    public bool isCharacterInside;
+    private void Awake()
     {
-        if(isCharacterInside && Input.GetKeyDown(KeyCode.U)) 
-        {
-            item.GetComponent<Image>().color = Color.white;
-            item.GetComponent<Button>().enabled = true;
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag(PlayerTag))
@@ -35,6 +29,12 @@ public class CollectableItemController : MonoBehaviour
             isCharacterInside = true;
             infoText.SetActive(true);
         }
+    }
+    public void CollectItem()
+    {
+            item.GetComponent<Image>().color = Color.white;
+            item.GetComponent<Button>().enabled = true;
+            Destroy(gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

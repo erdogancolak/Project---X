@@ -113,10 +113,11 @@ GameObject:
   - component: {fileID: 8054550701273757292}
   - component: {fileID: 8682000950847678957}
   - component: {fileID: 4676008434525234870}
-  - component: {fileID: 5002626184619970581}
   - component: {fileID: 1979388399157104512}
-  - component: {fileID: 2789810634070187718}
+  - component: {fileID: 5002626184619970581}
   - component: {fileID: 1183095835483059301}
+  - component: {fileID: 2789810634070187718}
+  - component: {fileID: 3135418127211195390}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -283,6 +284,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1979388399157104512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309415918956212385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5f2c1bb31e2804cb3e1daeda12893a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5002626184619970581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +320,7 @@ MonoBehaviour:
   isSliding: 0
   slideSpeed: 15
   slideDuration: 0.45
---- !u!114 &1979388399157104512
+--- !u!114 &1183095835483059301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,9 +329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3309415918956212385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5f2c1bb31e2804cb3e1daeda12893a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b874a0602d646f4da907ea5ecc248b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 500
+  currentHp: 0
 --- !u!114 &2789810634070187718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +363,7 @@ MonoBehaviour:
   attack2Anim: StickAttack2
   isRangedWeapon: 0
   projectileSpeed: 8
---- !u!114 &1183095835483059301
+--- !u!114 &3135418127211195390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,11 +372,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3309415918956212385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b874a0602d646f4da907ea5ecc248b1, type: 3}
+  m_Script: {fileID: 11500000, guid: fb95f02c20311dc47acc50f97f5d366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 500
-  currentHp: 0
 --- !u!1 &6996101709613756678
 GameObject:
   m_ObjectHideFlags: 0
