@@ -340,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3099b294f4067b4db8d18a74f761e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckCollider: {fileID: 4502038796335471931}
   groundCheck: {fileID: 858998331204222835}
   groundLayer:
     serializedVersion: 2
@@ -365,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b874a0602d646f4da907ea5ecc248b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 500
+  maxHp: 100
   currentHp: 0
 --- !u!114 &2789810634070187718
 MonoBehaviour:
@@ -388,7 +387,7 @@ MonoBehaviour:
   attackCooldown: 0.75
   attackCooldown2: 0.83
   rangeAttackCooldown: 2
-  knockbackForce: 2.7
+  knockbackForce: 7
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -413,8 +412,8 @@ MonoBehaviour:
   Ability: Bagirma
   AbilityRadius: 2.1
   enemyTag: Enemy
-  bagirmaSkillCooldown: 0
-  bagirmaKnockbackPower: 4.5
+  bagirmaSkillCooldown: 3
+  bagirmaKnockbackPower: 8
 --- !u!1 &6996101709613756678
 GameObject:
   m_ObjectHideFlags: 0

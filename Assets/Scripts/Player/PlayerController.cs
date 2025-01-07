@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
+    Animator animator;
 
     [Space]
 
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         currentHp = maxHp;    
     }
 
@@ -26,12 +29,12 @@ public class PlayerController : MonoBehaviour
     {
         if(currentHp <= 0)
         {
-            Debug.Log("Player Dead");
+            Debug.Log("Dead");
         }
     }
-
     public void TakeHit(float damage)
     {
+        animator.SetTrigger("TakeHit");
         currentHp -= damage;
     }
 }

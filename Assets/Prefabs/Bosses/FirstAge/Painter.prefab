@@ -197,7 +197,6 @@ MonoBehaviour:
   maxHp: 1000
   currentHp: 0
   waitDestroyFloat: 10
-  knockbackForce: 5.5
   isKnockbacked: 0
 --- !u!114 &5987117720592596705
 MonoBehaviour:
@@ -227,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52cb6d3f064de243aba302ca1b6b22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 7101436982485200085, guid: a76caf8f07f60c748bcfc3e019c4f23f, type: 3}
+  AttackPoint: {fileID: 1923497418711977423}
   SwordDamage: 10
   AttackRange: 0.8
   playerLayer:

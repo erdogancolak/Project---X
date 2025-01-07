@@ -166,5 +166,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52dde55e5866ee4c8a738ee4f5c108c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nailDamage: 50
+  projectileDamage: 50
   playerTag: Player

@@ -27,13 +27,14 @@ public class EnemyAttack : MonoBehaviour
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, playerLayer);
         foreach (Collider2D player in hitPlayer)
         {
+            Debug.Log("Player Hit");
             player.GetComponent<PlayerController>().TakeHit(SwordDamage);
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+    }
 }
